@@ -53,8 +53,7 @@ class ListFieldFormBloc extends FormBloc<String, String> {
     members.value[memberIndex].hobbies.addFieldBloc(TextFieldBloc());
   }
 
-  void removeHobbyFromMember(
-      {required int memberIndex, required int hobbyIndex}) {
+  void removeHobbyFromMember({required int memberIndex, required int hobbyIndex}) {
     members.value[memberIndex].hobbies.removeFieldBlocAt(hobbyIndex);
   }
 
@@ -71,9 +70,7 @@ class ListFieldFormBloc extends FormBloc<String, String> {
         return Member(
           firstName: memberField.firstName.value,
           lastName: memberField.lastName.value,
-          hobbies: memberField.hobbies.value
-              .map((hobbyField) => hobbyField.value)
-              .toList(),
+          hobbies: memberField.hobbies.value.map((hobbyField) => hobbyField.value).toList(),
         );
       }).toList(),
     );
@@ -204,16 +201,14 @@ class ListFieldsForm extends StatelessWidget {
                   LoadingDialog.hide(context);
 
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: SingleChildScrollView(
-                        child: Text(state.successResponse!)),
+                    content: SingleChildScrollView(child: Text(state.successResponse!)),
                     duration: const Duration(milliseconds: 1500),
                   ));
                 },
                 onFailure: (context, state) {
                   LoadingDialog.hide(context);
 
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(state.failureResponse!)));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.failureResponse!)));
                 },
                 child: SingleChildScrollView(
                   physics: const ClampingScrollPhysics(),
@@ -239,12 +234,9 @@ class ListFieldsForm extends StatelessWidget {
                                 return MemberCard(
                                   memberIndex: i,
                                   memberField: state.fieldBlocs[i],
-                                  onRemoveMember: () =>
-                                      formBloc.removeMember(i),
-                                  onAddHobby: () =>
-                                      formBloc.addHobbyToMember(i),
-                                  onClearHobby: () =>
-                                      formBloc.clearHobbyToMember(i),
+                                  onRemoveMember: () => formBloc.removeMember(i),
+                                  onAddHobby: () => formBloc.addHobbyToMember(i),
+                                  onClearHobby: () => formBloc.clearHobbyToMember(i),
                                 );
                               },
                             );
@@ -261,7 +253,7 @@ class ListFieldsForm extends StatelessWidget {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.red,
+                              backgroundColor: Colors.red,
                             ),
                             onPressed: formBloc.clearMember,
                             child: const Text('CLEAR MEMBER'),
@@ -334,8 +326,7 @@ class MemberCard extends StatelessWidget {
                 labelText: 'Last Name',
               ),
             ),
-            BlocBuilder<ListFieldBloc<TextFieldBloc, dynamic>,
-                ListFieldBlocState<TextFieldBloc, dynamic>>(
+            BlocBuilder<ListFieldBloc<TextFieldBloc, dynamic>, ListFieldBlocState<TextFieldBloc, dynamic>>(
               bloc: memberField.hobbies,
               builder: (context, state) {
                 if (state.fieldBlocs.isNotEmpty) {
@@ -359,8 +350,7 @@ class MemberCard extends StatelessWidget {
                             ),
                             IconButton(
                               icon: const Icon(Icons.delete),
-                              onPressed: () =>
-                                  memberField.hobbies.removeFieldBlocAt(i),
+                              onPressed: () => memberField.hobbies.removeFieldBlocAt(i),
                             ),
                           ],
                         ),
@@ -378,7 +368,7 @@ class MemberCard extends StatelessWidget {
                   child: const Text('ADD HOBBY'),
                 ),
                 TextButton(
-                  style: TextButton.styleFrom(primary: Colors.red),
+                  style: TextButton.styleFrom(backgroundColor: Colors.red),
                   onPressed: onClearHobby,
                   child: const Text('CLEAR HOBBY'),
                 ),
@@ -440,8 +430,8 @@ class SuccessScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             ElevatedButton.icon(
-              onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const ListFieldsForm())),
+              onPressed: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const ListFieldsForm())),
               icon: const Icon(Icons.replay),
               label: const Text('AGAIN'),
             ),

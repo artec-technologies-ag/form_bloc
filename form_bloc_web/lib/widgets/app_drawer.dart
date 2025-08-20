@@ -8,8 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../routes.dart';
 
 class AppDrawer extends StatefulWidget {
-  const AppDrawer({required this.permanentlyDisplay, Key? key})
-      : super(key: key);
+  const AppDrawer({required this.permanentlyDisplay, Key? key}) : super(key: key);
 
   final bool permanentlyDisplay;
 
@@ -30,8 +29,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _routeObserver.subscribe(
-        this, ModalRoute.of(context) as PageRoute<dynamic>);
+    _routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute<dynamic>);
   }
 
   @override
@@ -155,7 +153,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
       alignment: Alignment.centerLeft,
       child: Text(
         'Examples',
-        style: Theme.of(context).textTheme.headline6,
+        style: Theme.of(context).textTheme.headlineSmall,
       ),
     );
   }
@@ -209,10 +207,8 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                       padding: const EdgeInsets.all(2.0),
                       child: InkWell(
                         onTap: _launchGitHubURL,
-                        highlightColor:
-                            Theme.of(context).primaryColor.withAlpha(70),
-                        splashColor:
-                            Theme.of(context).primaryColor.withAlpha(50),
+                        highlightColor: Theme.of(context).primaryColor.withAlpha(70),
+                        splashColor: Theme.of(context).primaryColor.withAlpha(50),
                         hoverColor: Colors.white.withAlpha(25),
                         child: Card(
                           elevation: 2.0,
@@ -315,9 +311,7 @@ class _DrawerItemState extends State<DrawerItem> {
               child: ListTile(
                 leading: Icon(
                   widget.iconData ??
-                      (widget.isCurrentRoute
-                          ? Icons.sentiment_very_satisfied
-                          : Icons.sentiment_satisfied),
+                      (widget.isCurrentRoute ? Icons.sentiment_very_satisfied : Icons.sentiment_satisfied),
                   color: widget.isCurrentRoute ? Colors.white : null,
                 ),
                 title: Text(

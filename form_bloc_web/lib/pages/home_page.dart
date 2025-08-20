@@ -49,8 +49,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 6),
                 _buildText('Easy Form State Management using BLoC pattern.'),
                 const SizedBox(height: 6),
-                _buildText(
-                    'Separate the form state and Business Logic from the User Interface.'),
+                _buildText('Separate the form state and Business Logic from the User Interface.'),
                 const SizedBox(height: 40),
                 _buildText('form_bloc uses '),
                 _buildText('Bloc Library', url: 'https://bloclibrary.dev/'),
@@ -59,8 +58,7 @@ class HomePage extends StatelessWidget {
                   height: 50,
                   width: 250,
                   child: TextButton(
-                    onPressed: () => Navigator.of(context)
-                        .pushReplacementNamed(RouteNames.simpleExample),
+                    onPressed: () => Navigator.of(context).pushReplacementNamed(RouteNames.simpleExample),
                     child: Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
@@ -75,7 +73,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     style: TextButton.styleFrom(
-                      primary: Colors.black38,
+                      backgroundColor: Colors.black38,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                         side: const BorderSide(
