@@ -15,13 +15,11 @@ class FieldThemeResolver {
   InputDecorationTheme get decorationTheme {
     return fieldTheme?.decorationTheme ??
         formTheme.decorationTheme ??
-        theme.inputDecorationTheme;
+        theme.inputDecorationTheme as InputDecorationTheme;
   }
 
   TextStyle get textStyle {
-    return fieldTheme?.textStyle ??
-        formTheme.textStyle ??
-        theme.textTheme.titleMedium!;
+    return fieldTheme?.textStyle ?? formTheme.textStyle ?? theme.textTheme.titleMedium!;
   }
 
   MaterialStateProperty<Color?> get textColor {
